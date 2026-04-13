@@ -91,6 +91,9 @@ function renderTable() {
       '<td><button class="btn-delete" data-id="' + process.id + '">Удалить</button></td>';
 
     tbody.appendChild(row);
+    const decZone = row.cells[4];
+    const className = 'zone-'+zone;
+    decZone.classList.add(className);
   });
 }
 
@@ -324,4 +327,27 @@ function exportJSON() {
   link.click();
 
   URL.revokeObjectURL(url);
+}
+
+const elements = document.querySelectorAll('.meow');
+elements.forEach(changeColor);
+
+function changeColor(element, process) {
+  const zoneMeow = getZone(process);
+  if (zoneMeow === 1) {
+    const color = getElementById('.zone-1');
+    element.style.backgroundColor = color.style.backgroundColor;
+  }
+  if (zoneMeow === 2) {
+    const color = getElementById('.zone-2');
+    element.style.backgroundColor = color.style.backgroundColor;
+  }
+  if (zoneMeow === 3) {
+    const color = getElementById('.zone-3');
+    element.style.backgroundColor = color.style.backgroundColor;
+  }
+  if (zoneMeow === 4) {
+    const color = getElementById('.zone-4');
+    element.style.backgroundColor = color.style.backgroundColor;
+  }
 }
