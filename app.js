@@ -113,19 +113,12 @@ function renderMatrix() {
     chip.textContent = process.name;
     zoneEl.appendChild(chip);
   });
-}
 
-function renderAll() {
-  renderTable();
-  renderMatrix();
-  saveToStorage(); // Сохраняем после каждой перерисовки
-}
-
-// Внутри renderMatrix(), после распределения процессов:
-for (var i = 1; i <= 4; i++) {
-  var zoneEl = document.getElementById('zone-' + i);
-  var count = zoneEl.querySelectorAll('.process-chip').length;
-  var h3 = zoneEl.querySelector('h3');
+  // Внутри renderMatrix(), после распределения процессов:
+  for (var i = 1; i <= 4; i++) {
+    var zoneEl = document.getElementById('zone-' + i);
+    var count = zoneEl.querySelectorAll('.process-chip').length;
+    var h3 = zoneEl.querySelector('h3');
 
   // Названия зон
   var zoneNames = {
@@ -137,6 +130,15 @@ for (var i = 1; i <= 4; i++) {
 
   h3.textContent = zoneNames[i] + ' (' + count + ')';
 }
+}
+
+function renderAll() {
+  renderTable();
+  renderMatrix();
+  saveToStorage(); // Сохраняем после каждой перерисовки
+}
+
+
 
 // ========== ДОБАВЛЕНИЕ ПРОЦЕССА ==========
 
